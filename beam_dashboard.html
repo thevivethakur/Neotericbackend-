@@ -1,19 +1,21 @@
 
 <style>
-  body { font-family: 'Inter', sans-serif; margin: 2em; }
-  .card { border: 1px solid #ccc; border-radius: 8px; padding: 1em; margin-bottom: 1em; }
-  .btn { background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; }
+  body { font-family: 'Inter', sans-serif; margin: 2em; background: #f9f9f9; }
+  .card { border: 1px solid #ccc; border-radius: 8px; padding: 1.5em; margin-bottom: 2em; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .btn { background-color: #0074D9; color: white; padding: 12px 20px; border: none; border-radius: 5px; font-size: 16px; }
+  pre { background: #f0f0f0; padding: 1em; border-radius: 6px; white-space: pre-wrap; }
 </style>
 
 <div class="card">
-  <h2>BEAM Emissions Calculator</h2>
-  <p>Input project details and run carbon analysis.</p>
+  <h2>🏗️ BEAM Emissions Calculator</h2>
+  <p>Click to run carbon emissions estimation using default project values.</p>
   <button class="btn" onclick="calculateEmissions()">Run Calculation</button>
   <pre id="emission-output"></pre>
 </div>
 
 <div class="card">
-  <h3>Need Help?</h3>
+  <h3>🤖 Need Help?</h3>
+  <p>The Raven chatbot is ready to assist you with any questions about materials or emissions.</p>
   <div id="raven-chat"></div>
 </div>
 

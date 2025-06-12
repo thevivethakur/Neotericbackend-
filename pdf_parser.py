@@ -9,6 +9,5 @@ def parse_pdf(file_url):
     text = ""
     for page in doc:
         text += page.get_text()
-
     results = [line for line in text.splitlines() if "cement" in line.lower()]
     return "\n".join(results)
