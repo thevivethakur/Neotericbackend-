@@ -1,0 +1,33 @@
+
+<style>
+  body { font-family: 'Inter', sans-serif; margin: 2em; }
+  .card { border: 1px solid #ccc; border-radius: 8px; padding: 1em; margin-bottom: 1em; }
+  .btn { background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; }
+</style>
+
+<div class="card">
+  <h2>BEAM Emissions Calculator</h2>
+  <p>Input project details and run carbon analysis.</p>
+  <button class="btn" onclick="calculateEmissions()">Run Calculation</button>
+  <pre id="emission-output"></pre>
+</div>
+
+<div class="card">
+  <h3>Need Help?</h3>
+  <div id="raven-chat"></div>
+</div>
+
+<script>
+  window.ravenAISettings = { id: "your-raven-bot-id" };
+</script>
+<script src="https://cdn.raven.ai/widget.js"></script>
+<script>
+  function calculateEmissions() {
+    frappe.call({
+      method: 'beam_accounting.scripts.calculate_emissions',
+      callback: function(r) {
+        document.getElementById("emission-output").textContent = r.message || 'No result';
+      }
+    });
+  }
+</script>
