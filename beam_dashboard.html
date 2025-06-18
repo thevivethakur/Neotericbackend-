@@ -1,0 +1,33 @@
+
+<div class="card">
+  <h2>BEAM Emissions Calculator</h2>
+  <button onclick="calculateEmissions()">Run</button>
+  <pre id="emission-output"></pre>
+</div>
+<div class="card">
+  <h3>Ask BEAM Assistant (ChatGPT)</h3>
+  <textarea id="chatgpt-input" rows="3"></textarea>
+  <button onclick="askGPT()">Ask</button>
+  <pre id="chatgpt-response"></pre>
+</div>
+
+<script>
+function calculateEmissions() {
+  frappe.call({
+    method: 'beam_accounting.scripts.calculate_emissions.calculate_emissions',
+    callback: function(r) {
+      document.getElementById("emission-output").textContent = r.message;
+    }
+  });
+}
+function askGPT() {
+  let q = document.getElementById("chatgpt-input").value;
+  frappe.call({
+    method: 'beam_accounting.scripts.chatgpt_helper.ask_chatgpt',
+    args: { prompt: q },
+    callback: function(r) {
+      document.getElementById("chatgpt-response").textContent = r.message;
+    }
+  });
+}
+</script>
